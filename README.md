@@ -1,174 +1,78 @@
 # CodeCoach
 
-**Master Technical Interviews: Code + Communicate**
+AI-powered technical interview practice that evaluates both **code quality** and **communication clarity**.
 
-CodeCoach is the only platform that evaluates both your **code quality** AND **communication clarity**. Because great engineers need to be great communicators.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Try%20It-00f0ff?style=for-the-badge)](https://frontend-nine-hazel-20.vercel.app)
+[![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square)](https://react.dev)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688?style=flat-square)](https://fastapi.tiangolo.com)
+[![Claude](https://img.shields.io/badge/Claude-Sonnet%204-ff6b35?style=flat-square)](https://anthropic.com)
 
-![CodeCoach](https://img.shields.io/badge/CodeCoach-AI%20Powered-8b5cf6?style=for-the-badge)
-![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688?style=flat-square)
-![Claude](https://img.shields.io/badge/Claude-Sonnet%204-ff6b35?style=flat-square)
+## Why CodeCoach?
 
-## The Problem
-
-Traditional interview prep platforms only test your code. But real interviews evaluate:
-- How clearly you explain your approach
-- How you think through problems aloud
-- How you handle questions and edge cases
-
-**CodeCoach fills this gap.**
+Traditional platforms only test code. Real interviews evaluate how you **think aloud**, explain your approach, and handle edge cases. CodeCoach evaluates both.
 
 ## Features
 
-- **Split-Screen Practice**: Code editor + voice recorder, just like a real interview
-- **AI Evaluation**: Claude Sonnet 4 analyzes both your code AND verbal explanation
-- **Smart Hints**: Get help without giving away the answer (with score penalties)
-- **Live Timer**: Track your time with urgency indicators
-- **Progress Dashboard**: Radar charts, score trends, badges, and streaks
-- **5 Classic Problems**: Two Sum, Valid Parentheses, Reverse Linked List, Binary Search, FizzBuzz
+- **Split-Screen Practice** — Code editor + voice recorder, like a real interview
+- **AI Evaluation** — Claude analyzes your code AND verbal explanation
+- **Smart Hints** — Get help without giving away the answer (with penalties)
+- **Progress Tracking** — Radar charts, score trends, badges, streaks
 
-## Quick Start
+## Demo
 
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- npm or yarn
+**[Try the live demo →](https://frontend-nine-hazel-20.vercel.app)**
 
-### 1. Clone & Setup
-
-```bash
-cd CodeCoach
-
-# Backend setup
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# Create .env file
-cp .env.example .env
-# Edit .env with your API keys
-
-# Frontend setup
-cd ../frontend
-npm install
-```
-
-### 2. Configure API Keys
-
-Edit `backend/.env`:
-```
-ELEVENLABS_API_KEY=your_key_here
-ANTHROPIC_API_KEY=your_key_here
-```
-
-> **Note**: The app works without API keys using mock responses for development/demo.
-
-### 3. Run the App
-
-**Terminal 1 - Backend:**
-```bash
-cd backend
-source venv/bin/activate
-uvicorn app.main:app --reload --port 8000
-```
-
-**Terminal 2 - Frontend:**
-```bash
-cd frontend
-npm run dev
-```
-
-Open http://localhost:5173
+> Runs in mock mode without API keys. Full functionality requires Anthropic + ElevenLabs keys.
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18, Vite, TypeScript, Tailwind CSS |
-| Code Editor | Monaco Editor (VS Code) |
-| State | Zustand |
-| Charts | Recharts |
-| Animations | Framer Motion |
-| Backend | FastAPI, SQLAlchemy |
-| Database | SQLite |
-| AI | Claude Sonnet 4 (Anthropic) |
-| Speech-to-Text | ElevenLabs |
+| Frontend | Backend | AI |
+|----------|---------|-----|
+| React 18, TypeScript, Vite | FastAPI, SQLAlchemy | Claude Sonnet 4 |
+| Tailwind CSS, Framer Motion | SQLite | ElevenLabs STT |
+| Monaco Editor, Zustand | | |
+
+## Quick Start
+
+```bash
+# Clone
+git clone https://github.com/SaaiAravindhRaja/CodeCoach.git
+cd CodeCoach
+
+# Backend
+cd backend
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env  # Add your API keys
+uvicorn app.main:app --reload --port 8000
+
+# Frontend (new terminal)
+cd frontend
+npm install && npm run dev
+```
+
+Open [localhost:5173](http://localhost:5173)
 
 ## How It Works
 
-1. **Select a Problem** - Choose from 5 classic coding problems
-2. **Code & Explain** - Write your solution while recording your verbal explanation
-3. **Submit** - Your audio is transcribed and sent to Claude for analysis
-4. **Get Feedback** - Receive detailed scores on:
-   - Communication Clarity (1-10)
-   - Problem-Solving Methodology (1-10)
-   - Code Quality (1-10)
-   - Overall Interview Readiness (1-10)
+1. **Select** a problem (Two Sum, Valid Parentheses, etc.)
+2. **Code & Explain** your solution while recording
+3. **Submit** for AI evaluation
+4. **Review** scores: Communication, Problem Solving, Code Quality, Overall
 
-## API Endpoints
+## API
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/problems` | List all problems |
-| GET | `/api/problems/{id}` | Get problem details |
-| POST | `/api/sessions` | Start new session |
-| POST | `/api/sessions/{id}/audio` | Upload audio recording |
-| POST | `/api/sessions/{id}/submit` | Submit for evaluation |
-| GET | `/api/sessions` | Get practice history |
-| GET | `/api/stats` | Get dashboard stats |
-
-## Project Structure
-
-```
-CodeCoach/
-├── frontend/
-│   ├── src/
-│   │   ├── components/     # UI components
-│   │   ├── pages/          # Route pages
-│   │   ├── store/          # Zustand state
-│   │   └── services/       # API client
-│   └── ...
-├── backend/
-│   ├── app/
-│   │   ├── main.py         # FastAPI app
-│   │   ├── models.py       # Database models
-│   │   ├── routers/        # API routes
-│   │   └── services/       # Business logic
-│   └── ...
-└── README.md
-```
-
-## Scoring System
-
-| Dimension | What We Evaluate |
-|-----------|------------------|
-| **Communication** | Did you explain your approach? Think aloud? |
-| **Problem Solving** | Did you discuss edge cases? Trade-offs? |
-| **Code Quality** | Is it correct? Efficient? Readable? |
-| **Overall** | Holistic interview readiness (hint penalty applied) |
-
-## Demo Mode
-
-Without API keys, CodeCoach runs in demo mode:
-- Transcription returns placeholder text
-- Evaluation provides mock (but realistic) feedback
-
-This is perfect for:
-- Development
-- Testing UI/UX
-- Hackathon demos
-
-## Contributing
-
-PRs welcome! Please read our contributing guidelines.
+| Endpoint | Description |
+|----------|-------------|
+| `GET /api/problems` | List problems |
+| `POST /api/sessions` | Start session |
+| `POST /api/sessions/{id}/submit` | Submit for evaluation |
+| `GET /api/stats` | Dashboard stats |
 
 ## License
 
-MIT License - see LICENSE file
+MIT
 
 ---
 
-Built with AI for the next generation of software engineers.
-
-**CodeCoach** - *Because great code deserves great communication.*
+**CodeCoach** — Great code deserves great communication.
