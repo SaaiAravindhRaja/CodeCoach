@@ -1,7 +1,9 @@
 import type { Problem, Session, DashboardStats, TranscriptionResponse } from '../types';
 import { apiKeyService } from './apiKeys';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.PROD
+  ? 'https://codecoach-api.onrender.com/api'
+  : '/api';
 
 function getApiKeyHeaders(): Record<string, string> {
   const headers: Record<string, string> = {};

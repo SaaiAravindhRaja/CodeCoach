@@ -28,7 +28,9 @@
       "Bash(open \"https://railway.app/new\")",
       "Bash(render whoami:*)",
       "Bash(railway:*)",
-      "Bash(script -q /dev/null railway login:*)"
+      "Bash(script -q /dev/null railway login:*)",
+      "Bash(cloudflared:*)",
+      "Bash(brew install:*)"
     ]
   }
 }
