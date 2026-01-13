@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void text-white font-mono antialiased;
+    min-height: 100vh;
+  }
+
+  /* Selection - cyan highlight */
+  ::selection {
+    @apply bg-cyber/30 text-white;
+  }
+
+  /* Scrollbar - minimal */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-100 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber/50;
+  }
+
+  /* Focus - cyan ring */
+  *:focus-visible {
+    @apply outline-none ring-1 ring-cyber/50;
+  }
+}
+
+@layer components {
+  /* Glass card with border glow */
+  .card {
+    @apply relative bg-surface-300/50 backdrop-blur-sm border border-surface-100 rounded-lg overflow-hidden;
+  }
+
+  .card-cyber {
+    @apply card border-cyber/20;
+    box-shadow: inset 0 1px 0 0 rgba(0, 240, 255, 0.1);
+  }
+
+  .card-cyber:hover {
+    @apply border-cyber/40;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), inset 0 1px 0 0 rgba(0, 240, 255, 0.2);
+  }
+
+  /* Primary button - CYAN with glow */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-mono text-sm font-medium;
+    @apply bg-cyber text-black;
+    @apply hover:shadow-cyber transition-all duration-200;
+    @apply active:scale-[0.98];
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-mono text-sm font-medium;
+    @apply bg-transparent text-white border border-surface-100;
+    @apply hover:border-cyber/50 hover:text-cyber transition-all duration-200;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-mono text-sm;
+    @apply text-muted hover:text-white transition-colors;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2 py-1 rounded text-xs font-mono uppercase tracking-wider;
+  }
+
+  .badge-easy {
+    @apply badge text-neon bg-neon/10 border border-neon/20;
+  }
+
+  .badge-medium {
+    @apply badge text-heat bg-heat/10 border border-heat/20;
+  }
+
+  .badge-hard {
+    @apply badge text-danger bg-danger/10 border border-danger/20;
+  }
+
+  /* Terminal-style input */
+  .input {
+    @apply w-full px-4 py-3 bg-surface-300 border border-surface-100 rounded-lg;
+    @apply text-white placeholder-muted font-mono text-sm;
+    @apply focus:border-cyber/50 focus:outline-none transition-colors;
+  }
+
+  /* Scanline effect overlay */
+  .scanlines {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  /* Grid background */
+  .grid-bg {
+    @apply bg-grid-pattern bg-grid;
+  }
+
+  /* Glow text */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  }
+
+  .text-glow-neon {
+    text-shadow: 0 0 20px rgba(180, 255, 57, 0.5);
+  }
+
+  /* Typing cursor */
+  .cursor {
+    @apply inline-block w-3 h-6 bg-cyber ml-1 animate-blink;
+  }
+
+  /* Status dot */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-dot-live {
+    @apply status-dot bg-neon shadow-neon animate-pulse-cyber;
+  }
+
+  .status-dot-idle {
+    @apply status-dot bg-muted;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-1 bg-surface-100 rounded-full overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-cyber rounded-full transition-all duration-500;
+  }
+
+  .progress-bar-fill-neon {
+    @apply h-full rounded-full transition-all duration-500;
+    background-color: #b4ff39;
+  }
+
+  .progress-bar-fill-heat {
+    @apply h-full rounded-full transition-all duration-500;
+    background-color: #ff6b35;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Tabular numbers */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Monaco editor - pure black */
+.monaco-editor,
+.monaco-editor .margin,
+.monaco-editor-background,
+.monaco-editor .inputarea.ime-input {
+  background-color: #0a0a0a !important;
+}
+
+.monaco-editor .line-numbers {
+  color: #525252 !important;
+}
+
+.monaco-editor .cursor {
+  background-color: #00f0ff !important;
+}
