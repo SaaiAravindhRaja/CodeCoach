@@ -30,7 +30,8 @@
       "Bash(railway:*)",
       "Bash(script -q /dev/null railway login:*)",
       "Bash(cloudflared:*)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }
